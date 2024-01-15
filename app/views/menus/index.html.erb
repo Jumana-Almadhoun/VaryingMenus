@@ -1,0 +1,5 @@
+<div>
+<% @menus.each do |menu|%>
+<h5><%=link_to menu.name, menu_path(menu)%> </h5>
+<% end %>
+</div>
