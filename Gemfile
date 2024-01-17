@@ -28,6 +28,7 @@ gem "jbuilder"
 
 gem "geocoder"
 
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -74,3 +75,7 @@ end
 group :production do
  gem 'pg'
 end
+
+gem "cssbundling-rails", "~> 1.3"
+
+gem "jsbundling-rails", "~> 1.2"
