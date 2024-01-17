@@ -1,5 +1,16 @@
-<ul>
-<% @branches.each do |branch| %>
-<li> <%= branch.name %> </li>
-<% end %>
-</ul>
+<div class="container d-flex justify-content-center mt-5 pt-5">
+    <div class="row">
+        <% @branches.each do |branch| %>
+            <div class="col">
+                <div class="card text-center mb-3" style="width: 22rem; height:12rem">
+                    <div class="card-body">
+                        <h5 class="card-title">Branch <%= branch.id%>
+                        </h5>
+                        <p class="card-text"> <%= branch.name %></p>
+                        <%= button_to 'Order Now!', branch_path(branch),  method: :get, class: 'btn btn-danger rounded-0 mt-2', style: 'width: 10rem;' %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

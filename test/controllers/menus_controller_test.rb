@@ -1,7 +1,7 @@
 require "test_helper"
 
 class MenusControllerTest < ActionDispatch::IntegrationTest
-  setup do
+  def setup
     @menu = Menu.create(name: "Yellow")
   end
 

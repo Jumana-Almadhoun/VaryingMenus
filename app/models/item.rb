@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
-  has_many :branch_items
+  has_many  :order_items
+  has_many  :order, through: :order_items
+  has_many  :branch_items
   has_many  :branches, through: :branch_items
   validates :name, presence: true,  uniqueness: { case_sensitive: false },length: { minimum: 4}
   validates :is_cooke, presence: true
