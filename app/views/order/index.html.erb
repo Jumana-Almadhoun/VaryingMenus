@@ -1,0 +1,23 @@
+<h1>Order listing page</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class="pe-3">Number of Order</th>
+      <th class="pe-3">Branch</th>
+      <th colspan="2" class="pe-3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td class="pe-3"><%= order.id %></td>
+        <td class="pe-3"><%= order.branch_id %></td>
+        <td class="pe-3"><%= link_to 'Show', order_path(order) %></td>
+        <td class="pe-3"><%= link_to 'Delete',  order_path(order),
+         data: { turbo_method: :delete,turbo_confirm: "Are you sure?"} %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
