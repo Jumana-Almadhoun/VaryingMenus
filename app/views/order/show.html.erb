@@ -1,0 +1,30 @@
+<div class="row justify-content-center mt-5">
+    <div class="card" style="width: 18rem;">
+
+        <div class="crad-body">
+            <h5 class="card-title">Order ID: <%= @order.id %>
+            </h5>
+
+            <h6>Branch ID: <%= @order.branch_id %>
+            </h6>
+            <ul>
+                <% total = 0%>
+                <% @order.items.each do |item|%>
+                    <% order_item_details=OrderItemsController.get_details(@order.id, item.id)%>
+                        <li>
+                            <div class="row">
+                                <div class="col">
+                                    <%= item.name.capitalize() %>
+                                </div>
+                                <div class="col">
+                                    <%= order_item_details.pric.to_s + " SR" %>
+                                </div>
+                            </div>
+                        </li>
+                <% end %>
+                <p class="pt-5">Total: <span><%=@order.total.to_s + " SR" %></span>  </p>
+
+            </ul>
+        </div>
+    </div>
+</div>
