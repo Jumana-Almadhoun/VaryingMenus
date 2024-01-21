@@ -1,4 +1,4 @@
-class OrderController < ApplicationController
+class OrdersController < ApplicationController
     protect_from_forgery with: :null_session
 
     def index
@@ -11,7 +11,7 @@ class OrderController < ApplicationController
         total = 0
         if @order.save
            @order.item_ids.each do |item|
-            item_details  = BranchItemController.get_details(@order.branch_id, item)
+            item_details  = BranchItemsController.get_details(@order.branch_id, item)
             @order_item_details = OrderItemsController.get_details(@order.id, item)
             @order_item_details.set_price(item_details.price)
             total += item_details.price
