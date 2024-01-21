@@ -14,8 +14,8 @@
       <tr>
         <td class="pe-3"><%= order.id %></td>
         <td class="pe-3"><%= order.branch_id %></td>
-        <td class="pe-3"><%= link_to 'Show', order_path(order) %></td>
-        <td class="pe-3"><%= link_to 'Delete',  order_path(order),
+        <td class="pe-3"><%= link_to 'Show', orders_path(order) %></td>
+        <td class="pe-3"><%= link_to 'Delete',  orders_path(order),
          data: { turbo_method: :delete,turbo_confirm: "Are you sure?"} %> </td>
       </tr>
     <% end %>

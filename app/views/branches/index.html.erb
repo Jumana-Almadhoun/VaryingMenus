@@ -7,7 +7,7 @@
                         <h5 class="card-title">Branch <%= branch.id%>
                         </h5>
                         <p class="card-text"> <%= branch.name %></p>
-                        <%= button_to 'Order Now!', branch_path(branch),  method: :get, class: 'btn btn-danger rounded-0 mt-2', style: 'width: 10rem;' %>
+                        <%= button_to 'Order Now!', "branches/#{branch.id}",  method: :get, class: 'btn btn-danger rounded-0 mt-2', style: 'width: 10rem;' %>
                     </div>
                 </div>
             </div>

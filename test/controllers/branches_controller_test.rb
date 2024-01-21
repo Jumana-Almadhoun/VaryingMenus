@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BranchControllerTest < ActionDispatch::IntegrationTest
+class BranchesControllerTest < ActionDispatch::IntegrationTest
     def setup
         @branch = Branch.create(
             name: "Rawda",
