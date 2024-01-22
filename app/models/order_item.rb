@@ -2,14 +2,7 @@ class OrderItem < ApplicationRecord
     belongs_to :order
     belongs_to :item
 
-
-    # def set_price(price)
-    #     self.pric = price
-    #     save
-    # end
-
-    # def set_qty(qty)
-    #     self.qty = qty
-    #     save
-    # end
+    validates :item_id, presence: true
+    validates :pric, presence: true
+    validates :qty, presence: true , numericality:{greater_than: 0}
 end

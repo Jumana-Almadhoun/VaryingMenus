@@ -8,9 +8,6 @@ class OrderItemsController < ApplicationController
         @order_items.save
     end
 
-    def update
-
-    end
 
     def self.get_details(order_id, item_id)
         @order_item = OrderItem.find_by(order_id: order_id, item_id: item_id)
@@ -24,8 +21,6 @@ class OrderItemsController < ApplicationController
     def order_item_params
         params.require(:order_items).permit(:item_id, :order_id, :pric, :qty)
     end
-
-
 
 
 end
