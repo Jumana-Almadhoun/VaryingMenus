@@ -2,10 +2,11 @@
 
 one:
   branch_id: 1
-  username: MyString
+  username: User1
   total: 9.99
+
 
 two:
   branch_id: 1
-  username: MyString
-  total: 9.99
+  username: User2
+  total: 19.99
