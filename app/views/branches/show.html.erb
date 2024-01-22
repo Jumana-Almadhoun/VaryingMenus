@@ -1,32 +1,39 @@
-<%= form_with(model: Order.new, url: '../orders#create' , method: :POST) do |form| %>
+<%= form_with(model: Order.new, url: '../orders#create', method: :POST, html: { id: 'order-form' }) do |form| %>
   <%= form.hidden_field :branch_id, value: @branch.id %>
-    <%= form.hidden_field :total, value: 0 %>
+  <%= form.hidden_field :total, value: 1 %>
+  <%= csrf_meta_tags %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-      <div class="row justify-content-center mt-5">
-        <div class="card" style="width: 21rem;">
-          <div class="form-body py-5">
-            <p>
-              <%= form.label :username %><br />
-                <%= form.text_field :username %>
-            </p>
-            <h5 class="form-title text-center pb-3">
-              <%= @branch.name %> MENU
-            </h5>
-
-            <% if @branch.items.any? %>
-              <% @branch.items.each do |item| %>
-                <% item_details=BranchItemsController.get_details(@branch.id, item.id) %>
-                  <% item_disabled=item_details.available_qty.zero? %>
-
-                    <%= render partial: 'menu_item' , locals: { form: form, item: item, item_details: item_details,
-                      item_disabled: item_disabled } %>
-              <% end %>
-          <% end %>
-
-           <div class="text-center pt-3">
-                <%= form.submit 'Order Now!' , class: 'btn btn-danger rounded-0 mt-2' ,style: 'width: 10rem;' %>
-           </div>
+  <div class="row justify-content-center mt-5">
+    <div class="card" style="width: 18rem;">
+      <div class="crad-body">
+        <%= form.label :username %><br />
+        <%= form.text_field :username %>
+      </p>
+      <h5 class="form-title text-center pb-3">
+        <%= @branch.name %> MENU
+      </h5>
+    
+      <% if @branch.items.any? %>
+        <% @branch.items.each do |item| %>
+          <% item_details = BranchItemsController.get_details(@branch.id, item.id) %>
+          <% item_disabled = item_details.available_qty.zero? %>
+          <div class="mb-3">
+            <%= check_box_tag 'order[order_items_attributes][][item_id]', item.id , disabled:item_disabled%>
+            <%= label_tag "#{item.name}, Price: #{item_details.price}" %>
+            <%= number_field_tag 'order[order_items_attributes][][qty]', '0' , disabled:item_disabled%>
+            <%= hidden_field_tag 'order[order_items_attributes][][pric]', item_details.price, class: 'hidden-price-field' %>
           </div>
-        </div>
-      </div>
+        <% end %>
       <% end %>
+      <%= form.submit class: 'btn btn-danger rounded-0 my-2 text-center' %>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+<% end %>
