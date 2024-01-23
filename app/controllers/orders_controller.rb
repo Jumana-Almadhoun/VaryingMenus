@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
     )
 
     # Filter out order_items_attributes without item_id
-    permitted_params[:order_items_attributes]&.reject! { |order_item|order_item[:item_id].blank? }
+    permitted_params[:order_items_attributes]&.reject! { |order_item| order_item[:item_id].blank? || order_item[:qty] == 0 }
 
     if permitted_params[:order_items_attributes].present?
       # Create the order with the modified parameters
