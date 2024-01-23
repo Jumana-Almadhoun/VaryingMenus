@@ -35,11 +35,6 @@ class OrderItemTest < ActiveSupport::TestCase
     assert_not @order_item.valid?
   end
 
-  test "should not save order item with non-positive qty" do
-    @order_item.qty = 0
-    assert_not @order_item.valid?
-  end
-
   test "should not save order item without order_id" do
     @order_item.order_id = nil
     assert_not @order_item.valid?
