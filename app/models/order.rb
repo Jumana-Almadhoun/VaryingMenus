@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-    has_many :order_items, dependent: :destroy
+    has_many :order_items, dependent: :delete_all
     has_many :items, through: :order_items
     belongs_to :branch
     accepts_nested_attributes_for :order_items

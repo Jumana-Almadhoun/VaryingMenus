@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_many  :order_items, dependent: :destroy
+  has_many  :order_items, dependent: :delete_all 
   has_many  :orders, through: :order_items
   has_many  :branch_items
   has_many  :branches, through: :branch_items

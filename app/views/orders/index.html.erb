@@ -4,18 +4,19 @@
   <table class="table">
     <thead>
       <tr>
-        <th >Number of Order</th>
-        <th >Branch</th>
-        <th colspan="2">Actions</th>
+        <th class="text-center">Number of Order</th>
+        <th class="text-center">Branch</th>
+        <th class="text-center" colspan="2">Actions</th>
       </tr>
     </thead>
 
     <tbody>
       <% @orders.each do |order| %>
         <tr>
-          <td ><%= order.id %></td>
-          <td ><%= order.branch_id %></td>
-          <td ><%= link_to 'Show', "orders/#{order.id}", class: "btn btn-warning rounded-0" %></td>
+          <td class="text-center"><%= order.id %></td>
+          <td class="text-center"><%= order.branch_id %></td>
+          <td class="text-center" ><%= link_to 'Show', "orders/#{order.id}", class: "btn btn-warning rounded-0" %></td>
+          <td class="text-center"> <%= button_to 'Delete', order, method: :delete,  class: "btn btn-danger rounded-0"%></td>
         </tr>
       <% end %>
     </tbody>

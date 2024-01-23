@@ -34,9 +34,16 @@ class OrdersController < ApplicationController
   end
 
 
-    def show
+  def show
         @order = Order.find(params[:id])
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    if @order.destroy
+      redirect_to "/orders", allow_other_host: true
     end
+  end
 
 
 

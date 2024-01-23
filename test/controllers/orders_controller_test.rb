@@ -43,9 +43,13 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should show order" do
-    order = orders(:one)
-    get :show, params: { id: order.id }
+    get :show, params: { id: @order.id }
     assert_response :success
-    assert_equal order, assigns(:order)
+    assert_equal @order, assigns(:order)
+  end
+
+  test "should delete order" do
+    delete :destroy, params: { id: @order.id }
+    assert_response :found
   end
 end
