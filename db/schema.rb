@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_22_131929) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_01_122655) do
   create_table "branch_items", force: :cascade do |t|
     t.integer "branch_id"
     t.integer "item_id"
@@ -30,15 +30,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_131929) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.boolean "is_cooke"
+    t.boolean "is_cooked"
     t.decimal "preparationـtime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "active", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
     t.integer "item_id"
-    t.decimal "pric"
+    t.decimal "price"
     t.integer "qty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_131929) do
     t.decimal "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "active", null: false
   end
 
 end

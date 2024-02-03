@@ -11,7 +11,7 @@ def setup
   @branch.save
 
   @item = Item.new(name: "fries",
-  is_cooke: true,
+  is_cooked: true,
   preparationـtime: 5.31)
 
   @item.save
@@ -25,7 +25,7 @@ test "get new order form and create order" do
       branch_id:@branch.id,
       username:"jumana",
       total:50.0,
-      order_items_attributes: [{ item_id: @item.id, qty: 2, pric: 50 }]
+      order_items_attributes: [{ item_id: @item.id, qty: 2, price: 50 }]
       } }
   assert_response :redirect
   end

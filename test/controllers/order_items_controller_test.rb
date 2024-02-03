@@ -6,7 +6,7 @@ class OrderItemsControllerTest < ActionController::TestCase
     @branch = Branch.new(name: "yellow", latitude: "23.989" , longitude:"50.88")
     @branch.save
     @item = Item.new(name: "fries",
-    is_cooke: true, preparationـtime: 5.31)
+    is_cooked: true, preparationـtime: 5.31)
     @item.save
 
     @order = Order.new(username: 'Jumana5',
@@ -14,7 +14,7 @@ class OrderItemsControllerTest < ActionController::TestCase
     @order.save
 
     @order_item = OrderItem.new(item_id: @item.id,
-    pric: 10.0, qty: 3, order_id: @order.id)
+    price: 10.0, qty: 3, order_id: @order.id)
     @order_item.save
   end
 

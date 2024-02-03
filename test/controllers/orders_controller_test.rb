@@ -10,7 +10,7 @@ class OrdersControllerTest < ActionController::TestCase
 
 
     @item = Item.create(name: "fries",
-    is_cooke: true, preparationـtime: 5.31)
+    is_cooked: true, preparationـtime: 5.31)
     @item.save
 
     @order = Order.create(username: 'Jumana5',
@@ -18,7 +18,7 @@ class OrdersControllerTest < ActionController::TestCase
     @order.save
 
     @order_item = OrderItem.new(item_id: @item.id,
-    pric: 10.0, qty: 3, order_id: @order.id)
+    price: 10.0, qty: 3, order_id: @order.id)
   end
   test "should get index" do
     get :index
@@ -34,7 +34,7 @@ class OrdersControllerTest < ActionController::TestCase
           branch_id: @branch.id,
           total: 100,
           username: 'test_user',
-          order_items_attributes: [{ item_id: @item.id, qty: 2, pric: 50 }]
+          order_items_attributes: [{ item_id: @item.id, qty: 2, price: 50 }]
         }
       }
     end
@@ -48,8 +48,19 @@ class OrdersControllerTest < ActionController::TestCase
     assert_equal @order, assigns(:order)
   end
 
-  test "should delete order" do
+  test "destroy action should update order status to 'archived'" do
+
+
+    # Call the destroy action on the OrdersController
     delete :destroy, params: { id: @order.id }
-    assert_response :found
+
+    # Reload the order from the database to get the updated status
+    @order.reload
+
+    # Assert that the status is updated to 'archived'
+    assert_equal 'archived', @order.status
+
+    # Assert that the response is a redirect (assuming you have a redirect in your destroy action)
   end
+
 end

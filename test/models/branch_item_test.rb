@@ -2,7 +2,7 @@ require "test_helper"
 
 class BranchItemTest < ActiveSupport::TestCase
   def setup
-    @item = Item.new(name: "fries", is_cooke: true, preparationـtime: 5.31)
+    @item = Item.new(name: "fries", is_cooked: true, preparationـtime: 5.31)
     @branch = Branch.new(name: "yellow", latitude: "23.989" , longitude:"50.88")
     @item.save
     @branch.save

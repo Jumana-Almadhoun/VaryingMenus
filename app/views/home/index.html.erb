@@ -8,10 +8,10 @@
                         <%= button_to 'Pickup' , 'branches#index', method: :get, class: 'btn btn-danger rounded-0 mt-2', style: 'width: 10rem;' %>
                     </div>
                     <div class="col-12 pt-3">
-                        <%= form_with url: "branches/#{BranchesController.haversine_distance(21.561642, 39.223587).id}",method: :get, local: true do |f| %>
-                        <%= f.submit :"Deliver", class: 'btn btn-warning rounded-0', style: 'width: 10rem;'%>
-                        <% end %>
-                    </div>
+                        <% lat1 = "21.561642"%>
+                        <% lon1 = "21.561642"%>
+                        <%= button_to 'Deliver', nearest_branch_branches_path(lat1: lat1, lon1:lon1), method: :get, class: 'btn btn-warning rounded-0', style: 'width: 10rem;' %>
+                    </div>      
                 </div>
             </div>
         </div>
