@@ -6,7 +6,7 @@ class OrderItemTest < ActiveSupport::TestCase
 
   def setup
    @item = Item.new(name: "fries",
-   is_cooke: true, preparationـtime: 5.31)
+   is_cooked: true, preparationـtime: 5.31)
    @item.save
 
    @order = Order.new(username: 'Jumana5',
@@ -14,7 +14,7 @@ class OrderItemTest < ActiveSupport::TestCase
    @order.save
 
    @order_item = OrderItem.new(item_id: @item.id,
-   pric: 10.0, qty: 3, order_id: @order.id)
+   price: 10.0, qty: 3, order_id: @order.id)
 
   end
 
@@ -25,8 +25,8 @@ class OrderItemTest < ActiveSupport::TestCase
     assert_not @order_item.valid?
   end
 
-  test "should not save order item without pric" do
-    @order_item.pric = nil
+  test "should not save order item without price" do
+    @order_item.price= nil
     assert_not @order_item.valid?
   end
 
@@ -41,6 +41,6 @@ class OrderItemTest < ActiveSupport::TestCase
   end
 
 
-  
+
 
 end

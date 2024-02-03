@@ -12,4 +12,20 @@ class Order < ApplicationRecord
         self.total = total
         save
     end
+
+    def self.active
+        where(status:'active')
+    end
+
+    def self.archived
+        where(status: 'archived')
+    end
+
+    def active?
+        status == "active"
+    end
+
+    def archived?
+        status == "archived"
+    end
 end

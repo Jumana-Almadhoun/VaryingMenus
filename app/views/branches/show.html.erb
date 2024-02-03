@@ -22,7 +22,7 @@
             <%= check_box_tag 'order[order_items_attributes][][item_id]', item.id , disabled:item_disabled%>
             <%= label_tag "#{item.name}, Price: #{item_details.price}" %>
             <%= number_field_tag 'order[order_items_attributes][][qty]', '0' , disabled:item_disabled%>
-            <%= hidden_field_tag 'order[order_items_attributes][][pric]', item_details.price, class: 'hidden-price-field' %>
+            <%= hidden_field_tag 'order[order_items_attributes][][price]', item_details.price, class: 'hidden-price-field' %>
           </div>
         <% end %>
       <% end %>

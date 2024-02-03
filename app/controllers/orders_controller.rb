@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
       :branch_id,
       :total,
       :username,
-      order_items_attributes: [:item_id, :qty, :pric]
+      order_items_attributes: [:item_id, :qty, :price]
     )
 
     # Filter out order_items_attributes without item_id
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
             @order.item_ids.each do |item|
             item_details  = BranchItemsController.get_details(@order.branch_id, item)
             order_item_details = OrderItemsController.get_details(@order.id, item)
-            total += (order_item_details.pric*order_item_details.qty)
+            total += (order_item_details.price*order_item_details.qty)
            end
            @order.set_total(total)
            redirect_to "/orders/#{@order.id}", allow_other_host: true
@@ -35,17 +35,12 @@ class OrdersController < ApplicationController
 
 
   def show
-        @order = Order.find(params[:id])
+    @order = Order.find(params[:id])
   end
 
   def destroy
     @order = Order.find(params[:id])
-    if @order.destroy
-      redirect_to "/orders", allow_other_host: true
-    end
+    @order.update(status: 'archived')
   end
-
-
-
 
 end

@@ -1,7 +1,7 @@
 require "test_helper"
 class ItemTest < ActiveSupport::TestCase
   def setup
-  @item = Item.new(name: "fries", is_cooke: true, preparationـtime: 5.31)
+  @item = Item.new(name: "fries", is_cooked: true, preparationـtime: 5.31)
   end
 
 #to check if there is a model Item
@@ -17,8 +17,8 @@ class ItemTest < ActiveSupport::TestCase
   end
 
 
-  test "is_cooke should be present" do
-    @item.is_cooke = nil
+  test "is_cooked should be present" do
+    @item.is_cooked = nil
     assert_not @item.valid?
   end
 
@@ -30,7 +30,7 @@ class ItemTest < ActiveSupport::TestCase
 
   test "name should be unique" do
     @item.save
-    @item2 = Item.new(name: "fries", is_cooke: true, preparationـtime: 5.31)
+    @item2 = Item.new(name: "fries", is_cooked: true, preparationـtime: 5.31)
     assert_not @item2.valid?
   end
 
