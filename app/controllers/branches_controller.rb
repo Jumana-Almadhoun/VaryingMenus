@@ -23,7 +23,6 @@ class BranchesController < ApplicationController
     @nearest_branch = nil
 
     branches.each do |branch|
-      puts(branch.name + " HI")
       lat2 = branch.latitude
       lon2 = branch.longitude
 
