@@ -11,7 +11,7 @@ class BranchesControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should get index" do
-        get '/branch'
+        get '/branches'
         assert_response :success
     end
 
@@ -22,20 +22,13 @@ class BranchesControllerTest < ActionDispatch::IntegrationTest
 
     # test/controllers/branches_controller_test.rb
 
-  test 'should get test_haversine_distance' do
-    # Create some sample data
-    user_latitude = 37.7749
-    user_longitude = -122.4194
 
-    branch1 = Branch.create(name: 'Branch 1', latitude: 37.7749, longitude: -122.4194)
-    branch2 = Branch.create(name: 'Branch 2', latitude: 37.7550, longitude: -122.4056)
-    branch1.save
-    branch2.save
-
-    # Call the haversine_distance method
-    result = BranchController.haversine_distance(user_latitude, user_longitude)
-    assert_not_nil result
-  end
+    test 'should get nearest branch' do
+        @branch1 = branches(:branch1)
+        @branch2 = branches(:branch2)
+        get "/branches#nearest", params: { lat1: 37.7749, lon1: -122.4194 }
+        assert_response :success
+    end
 
 
 
